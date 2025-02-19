@@ -1,0 +1,75 @@
+import random
+from art import logo
+
+def deal_card():
+    """Out of the possible card choices in 'cards' choice a random card, assign it to its own variable and return it"""
+    cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+    card = random.choice(cards)
+    return card
+
+def compare(player_score, comp_score):
+    """Take the user's cards and the computer's cards and determine which has a superior hand"""
+    if comp_score == player_score:
+        print("It's a draw")
+    elif comp_score == 0:
+        print("Computer Blackjack. You lose")
+    elif player_score == 0:
+        print("Blackjack! You win.")
+    elif player_score > 21:
+        print("You went over, you lose.")
+    elif comp_score > 21:
+        print("Computer went over, you win.")
+    elif  player_score > comp_score:
+        print("You win.")
+    else:
+        print("You lose.")
+        
+def calculate_score(cards):
+    """Determine whether the user or the computer has a blackjack and if an ace is in a hand with less than 21 points to convert to a 1
+    then return the score calculated from the cards"""
+    if len(cards) == 2 and sum(cards) == 21:
+      return 0
+
+    if 11 in cards and sum(cards) > 21:
+      cards.remove(11)
+      cards.append(1)
+
+    return sum(cards)
+
+def play_game():
+  print(logo)
+  player_cards = []
+  computer_cards = []
+  player_score = -1
+  computer_score = -1
+  game_running = True
+
+  for _ in range(2):
+    player_cards.append(deal_card())
+    computer_cards.append(deal_card())
+
+  while game_running is True:
+    player_score = calculate_score(player_cards)
+    computer_score = calculate_score(computer_cards)
+    print(f"Your cards: {player_cards}, current score {player_score}")
+    print(f"Computer's first cards: {computer_cards[0]}")
+
+    if computer_score == 0 or player_score == 0 or player_score > 21:
+      game_running = False
+    else:
+      player_deals = input("Type 'y' to get another card, type 'n' to pass:\n")
+      if player_deals == "y"
+        player_cards.append(deal_card())
+      else:
+        game_running = False
+        
+  while player_score != 0 and computer_score < 17:
+    computer_cards.append(deal_card())
+    computer_score = calculate_score(computer_cards)
+  print(f"Your final hand: {player_cards}, final score: {player_score}")
+  print(f"Computer's final hand: {computer_score}, final score {computer_score}")
+  print(compare(player_score, computer_score))
+
+while input("Do you want to play a game of Blackjack? Type 'y' or 'n':\n") == "y":
+  print("\n" * 20)
+  play_game
