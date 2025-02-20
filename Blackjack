@@ -1,7 +1,6 @@
 # The below code does not reflect original work, rather the result of learning via the course "100 Days of Code: The Complete Python Pro Bootcamp"
 
 import random
-from art import logo
 
 def deal_card():
     """Out of the possible card choices in 'cards' choice a random card, assign it to its own variable and return it"""
@@ -39,7 +38,6 @@ def calculate_score(cards):
     return sum(cards)
 
 def play_game():
-  print(logo)
   player_cards = []
   computer_cards = []
   player_score = -1
