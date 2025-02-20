@@ -1,6 +1,5 @@
-# Display art
-from art import logo, vs
-print(logo)
+# The below code does not reflect original work, rather the result of learning via the course "100 Days of Code: The Complete Python Pro Bootcamp"
+
 
 # Generate a random account from game data
 import random
@@ -43,7 +42,6 @@ while game_running is True:
 
   # Clear the screen
   print("\n" * 20)
-  print(logo)
 
   # Get follower amount for each account
   followers_1_amount = rand_account_1["follower_count"]
