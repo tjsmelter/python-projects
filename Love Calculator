@@ -1,0 +1,23 @@
+# The below code does not reflect original work, rather the result of learning via the course "100 Days of Code: The Complete Python Pro Bootcamp"
+
+# Create a program that takes the letters in a pair of inputs (names) and calculates how many of the letters in those inputs are also found in the words "True" and "Love"
+# Then concatenates them together to form a final 'love score' 
+
+def calculate_love_score(name1, name2):
+    name1_score = 0
+    name2_score = 0
+    for x in name1:
+        if x in "True":
+            name1_score += 1
+        if x in "Love":
+            name1_score += 1
+    print(name1_score)
+    for x in name2:
+        if x in "True":
+            name2_score += 1
+        if x in "Love":
+            name2_score += 1
+    print(name2_score)
+    print(f"Your final love score is {name1_score}{name2_score}.")
+
+calculate_love_score("Jerry", "Jenny")
