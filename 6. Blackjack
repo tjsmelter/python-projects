@@ -2,12 +2,15 @@
 
 import random
 
+# Create a function that will deal a card out of the possibilities in a hand
 def deal_card():
     """Out of the possible card choices in 'cards' choice a random card, assign it to its own variable and return it"""
     cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
     card = random.choice(cards)
     return card
 
+# Create a function to compare two inputs(the user and computer's scores) and print out the corresponding results
+# Account for when a player has a blackjack, when a player has gone over 21, and when a player has more than the other
 def compare(player_score, comp_score):
     """Take the user's cards and the computer's cards and determine which has a superior hand"""
     if comp_score == player_score:
@@ -24,7 +27,9 @@ def compare(player_score, comp_score):
         print("You win.")
     else:
         print("You lose.")
-        
+
+# Create a function that will calculate whether the user or computer has a blackjack with two cards 
+# And if an ace is in a hand with less than 21 points to convert it from 11 to a 1
 def calculate_score(cards):
     """Determine whether the user or the computer has a blackjack and if an ace is in a hand with less than 21 points to convert to a 1
     then return the score calculated from the cards"""
@@ -37,39 +42,52 @@ def calculate_score(cards):
 
     return sum(cards)
 
+# Create a function to play a hand of blackjack
 def play_game():
+  # Create two lists in which to store the player and computers hand
   player_cards = []
   computer_cards = []
+  # Set the player and computer scores to -1 so that it will not trigger the below conditional for ending the game
   player_score = -1
   computer_score = -1
   game_running = True
 
+  # Deal the starting hands for each player and add them to the above lists
   for _ in range(2):
     player_cards.append(deal_card())
     computer_cards.append(deal_card())
 
+  
   while game_running is True:
+    # After the hands have been dealt, display the user's full hand and the first card in the computer's hand
     player_score = calculate_score(player_cards)
     computer_score = calculate_score(computer_cards)
     print(f"Your cards: {player_cards}, current score {player_score}")
     print(f"Computer's first cards: {computer_cards[0]}")
 
+    # If either player scores a blackjack, end the while loop
     if computer_score == 0 or player_score == 0 or player_score > 21:
       game_running = False
     else:
+      # Collect user input for if they want to draw another card. If so, draw another card. If not, end the while loop.
       player_deals = input("Type 'y' to get another card, type 'n' to pass:\n")
       if player_deals == "y"
         player_cards.append(deal_card())
       else:
         game_running = False
-        
+
+  # Create a while loop that will make the computer draw an additional card, as long as the user does not have a blackjack 
+  # AND the computer's score is less than 17
   while player_score != 0 and computer_score < 17:
     computer_cards.append(deal_card())
     computer_score = calculate_score(computer_cards)
+
+  # Print the final hands of each player, the final scores of each player, and call the compare function to compare their scores.
   print(f"Your final hand: {player_cards}, final score: {player_score}")
   print(f"Computer's final hand: {computer_score}, final score {computer_score}")
   print(compare(player_score, computer_score))
 
+# Create an additional while loop that allows the blackjack game to be played while the answer to an input question continues to be "y"
 while input("Do you want to play a game of Blackjack? Type 'y' or 'n':\n") == "y":
   print("\n" * 20)
   play_game
