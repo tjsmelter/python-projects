@@ -83,7 +83,7 @@ print(logo)
 chosen_word = random.choice(word_list)
 print(chosen_word)
 
-#create a placeholder that will show the user how many letters are in the word, using underscores
+# Create a placeholder that will show the user how many letters are in the word, using underscores
 placeholder = ""
 word_length = len(chosen_word)
 for position in range(word_length):
