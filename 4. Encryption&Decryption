@@ -5,25 +5,25 @@ alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n'
             'v', 'w', 'x', 'y', 'z']
 
 
-# create a function that will take in three variables, the text that the user wanted to encode or decode, the shift amount, and whether they wanted to encode or decode
+# Create a function that will take in three variables, the text that the user wanted to encode or decode, the shift amount, and whether they wanted to encode or decode
 def run_program(original_text, shift_amount, encode_or_decode):
     output_text = ""
 
-    # when the user wants to decode, convert the shift_amount variable so that it can take an encoded word and be able to decode it, if given the correct shift amount
+    # When the user wants to decode, convert the shift_amount variable so that it can take an encoded word and be able to decode it, if given the correct shift amount
     if encode_or_decode == "decode":
         shift_amount *= -1
 
-    # if a user enters a number/symbol/space, add that character as is to the output text (as we will not be able to encode it with the alphabet method)
+    # If a user enters a number/symbol/space, add that character as is to the output text (as we will not be able to encode it with the alphabet method)
     for letter in original_text:
         if letter not in alphabet:
             output_text += letter
 
         else:
-            # find the position (index) of each letter and "shift" it by the respective shift amount
+            # Find the position (index) of each letter and "shift" it by the respective shift amount
             shifted_position = alphabet.index(letter) + shift_amount
 
-            # create a new shifted position variable that takes into account when the shifted position happens to be outside the numerical range of the alphabet (25)
-            # in order to ensure that the shifted_position will never fall outside of the range of the alphabet
+            # Create a new shifted position variable that takes into account when the shifted position happens to be outside the numerical range of the alphabet (25)
+            # In order to ensure that the shifted_position will never fall outside of the range of the alphabet
             shifted_position %= len(alphabet)
             output_text += alphabet[shifted_position]
 
@@ -33,7 +33,7 @@ def run_program(original_text, shift_amount, encode_or_decode):
 
 game_over = False
 while not game_over:
-    # collect the user input for whether they want to encode or decode, what their message will be, and by how many positions will the message be shifted
+    # Collect the user input for whether they want to encode or decode, what their message will be, and by how many positions will the message be shifted
     direction = input("Type 'encode to encrypt, type 'decode to decrypt:\n").lower()
     text = input("Type your message:\n").lower()
     shift = int(input("Type the shift number:\n"))
