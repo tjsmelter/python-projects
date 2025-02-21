@@ -80,6 +80,7 @@ print(logo)
 chosen_word = random.choice(word_list)
 print(chosen_word)
 
+#create a placeholder that will show the user how many letters are in the word, using underscores
 placeholder = ""
 word_length = len(chosen_word)
 for position in range(word_length):
@@ -96,7 +97,7 @@ while not game_over:
     print(f"****************************{lives} LIVES LEFT****************************")
     guess = input("Guess a letter: ").lower()
 
-    # In a for loop, make sure that you can keep the previously guessed correct letters in the display
+
     # If the user has entered a letter they've already guessed, print the letter and let them know.
 
     if guess in guessed_letters:
@@ -104,6 +105,7 @@ while not game_over:
 
     display = ""
 
+    # In a for loop, make sure that you can keep the previously guessed correct letters in the display
     for letter in chosen_word:
         if letter == guess:
             display += letter
@@ -116,11 +118,9 @@ while not game_over:
             guessed_letters.append(guess)
 
 
-
     print("Word to guess: " + display)
 
     # If the letter is not in the chosen_word, print out the letter and let them know it's not in the word.
-    #  e.g. You guessed d, that's not in the word. You lose a life.
 
     if guess not in chosen_word:
         lives -= 1
