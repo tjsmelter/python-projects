@@ -22,20 +22,27 @@ operations = {
 
 #Use the dictionary operations to perform the calculations.
 
-
+#Create a function for the calculator that will execute the calculations when called on
 def calculator()
     should_accumulate = True
+
+    #collect the user input for the first number they want to be involved in the calculation
     user_input_1 = float(input("What is the first number?\n"))
+
+    #allow the game to be repeated assuming that should_accumulate is still True
     while should_accumulate is True:
 
+        #based on the user input, select the corresponding mathematical operator and ask for a second number to perform the calculation
         for symbol in operations:
             print(symbol)
         math_operator = input("Type a mathematical operator: '+', '-','*' or '/'\n")
         user_input_2 = float(input("Type a second number\n"))
 
+        #use the dictionary to call the mathematical operator that the user chose, then call its corresponding function using the two input numbers
         initial_output = operations[math_operator](user_input_1, user_input_2)
         print(f"{user_input_1} {math_operator} {user_input_2} = {initial_output}")
 
+        #collect user input if they want to continue the game using the output from the previous calculation, if not restart the app from scratch
         continue_choice = input(f"Do you want to continue working with the {initial_output}? If so, type Yes. Otherwise, Type No to start a new calculation.\n").lower()
         if continue_choice == "yes":
             user_input_1 = initial_output
