@@ -1,4 +1,4 @@
-# The below code does not reflect original work, rather the result of learning via the course "100 Days of Code: The Complete Python Pro Bootcamp"
+# The following code does not reflect original work, rather the result of learning via the course "100 Days of Code: The Complete Python Pro Bootcamp"
 
 # Create a program that will take a number as an input and output "True" if it is a prime number, or "False" if it is not
 def prime(num):
