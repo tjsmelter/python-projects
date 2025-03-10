@@ -16,6 +16,7 @@ snake = Snake()
 food = Food()
 scoreboard = Scoreboard()
 
+# create the onkey and listen commands to allow the user to control the snake
 screen.listen()
 screen.onkey(snake.turn_up, "Up")
 screen.onkey(snake.turn_down, "Down")
@@ -23,6 +24,7 @@ screen.onkey(snake.turn_left,"Left")
 screen.onkey(snake.turn_right, "Right")
 
 
+# create a while loop so that the game will continuously run until the snake hits the border or itself
 game_is_on = True
 while game_is_on:
     screen.update()
@@ -30,18 +32,18 @@ while game_is_on:
 
     snake.move()
 
-    #Collision with food
+    # create a conditional statement that accounts for a collision with food on screen
     if snake.snake_head.distance(food) < 25:
         food.generate_food()
         scoreboard.accumulate_score()
         snake.extend_snake()
 
-    #Crash into wall
+    # create a conditional statement that acconts for a collision with the wall
     if snake.snake_head.xcor() > 280 or snake.snake_head.ycor() > 280 or snake.snake_head.xcor() < -280 or snake.snake_head.ycor() < -280:
         game_is_on = False
         scoreboard.game_over()
 
-    #Crash into tail
+    # create a conditional statement that accounts for a collision with its tail
     #if snake head crashed into any segment in the tail: then game over
     for segment in snake.segments[1:]:
         # if segment == snake.snake_head:
