@@ -1,3 +1,5 @@
+# The following code does not reflect original work, rather the result of learning via the course "100 Days of Code: The Complete Python Pro Bootcamp"
+
 from turtle import Screen, Turtle
 from paddle import Paddle
 from ball import Ball
