@@ -1,0 +1,29 @@
+import turtle as t
+from turtle import Screen, Turtle
+import random
+
+tim = t.Turtle()
+tim.speed("fastest")
+
+# set color mode to 255 to allow RGB colors
+t.colormode(255)
+
+# create function to create a random RGB color
+def random_color():
+    r = random.randint(0,255)
+    g = random.randint(0,255)
+    b = random.randint(0,255)
+    return (r,g,b)
+
+# create a function that will shift the drawing angle by 5 every iteration
+def shift_angle():
+    shift = 0
+    tim.left(shift + 5)
+    tim.circle(100)
+
+color = tim.pencolor(random_color())
+
+# create a for loop that will iterate through the draw and shift angle actions 72 times
+for _ in range(72):
+    shift_angle()
+    tim.pencolor(random_color())
