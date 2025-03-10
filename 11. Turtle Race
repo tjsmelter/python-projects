@@ -1,0 +1,52 @@
+# The following code does not reflect original work, rather the result of learning via the course "100 Days of Code: The Complete Python Pro Bootcamp"
+
+from turtle import Turtle, Screen
+import random
+
+is_race_running = False
+screen = Screen()
+screen.setup(width=500,height=400)
+user_bet = screen.textinput(title="Make a bet", prompt="Which turtle will win the race? Enter a color: ")
+colors = ["red","orange","yellow","green","blue","purple"]
+y_positions = [150,100,50,0,-50,-100]
+all_turtles = []
+
+# create a function that calls the turtle to move at a random interval between 0 and 10
+def move_turtle(turtle):
+    move_choice = random.randint(0,10)
+    turtle.forward(move_choice)
+
+# create a function that creates six turtle objects that have the different colors from the color list 
+# and that fall along the different positions in the y_positions list
+for turtle_index in range(0,6):
+    new_turtle = Turtle(shape="turtle")
+    new_turtle.color(colors[turtle_index])
+    new_turtle.penup()
+    new_turtle.goto(-200, y_positions[turtle_index])
+    all_turtles.append(new_turtle)
+
+# create a conditional statement that evaluates whether the user has input a response to the initial prompt
+if user_bet:
+    is_race_running = True
+
+# create a while loop that will run as long as the user has responded to the initial prompt
+while is_race_running:
+
+    # create a for loop that will move the turtles forward until one of them crosses the end of the screen
+    # then inform the user of the winning color and whether they won or not
+    for turtle in all_turtles:
+        if turtle.xcor() > 200:
+            is_race_running = False
+            winning_color = turtle.pencolor()
+            if user_bet == turtle:
+                print(f"Congrats, you won! The {winning_color} turtle won the race!")
+                is_race_running = False
+            else:
+                print(f"The {winning_color} turtle won. You picked the {user_bet} turtle. Good luck next time.")
+                is_race_running = False
+
+        rand_distance = random.randint(0,10)
+        turtle.forward(rand_distance)
+
+
+screen.exitonclick()
