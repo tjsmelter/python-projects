@@ -1,10 +1,7 @@
+# The following code does not reflect original work, rather the result of learning via the course "100 Days of Code: The Complete Python Pro Bootcamp"
+
 import pandas
 # {new_key:new_value for (index,row) in df.iterrows()}
-
-# TODO 1. Create a dictionary in this format:
-# {"A": "Alfa", "B": "Bravo"}
-
-# TODO 2. Create a list of the phonetic code words from a word that the user inputs
 
 # create a data frame based on the csv "nato_phonetic_alphabet.csv"
 df = pandas.read_csv("nato_phonetic_alphabet.csv")
